@@ -21,39 +21,7 @@
         scroll-behavior: smooth;
       }
 
-      .tooltip {
-        position: relative;
-        display: inline-block;
-      }
-
-      .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 500px;
-        background-color: black;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
-        position: absolute;
-        z-index: 1;
-        top: -5px;
-        left: 110%;
-      }
-
-      .tooltip .tooltiptext::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: 100%;
-        margin-top: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: transparent black transparent transparent;
-      }
-      .tooltip:hover .tooltiptext {
-        visibility: visible;
-      }
-
+      
       .nav-link {
         position: relative;
       }
@@ -1343,19 +1311,13 @@
           &copy; 2023 Mustafa Omer. All rights reserved.
         </p>
       </div>
-
-      <div class="tooltip">
         <a
           style="color: white; padding-left: 5px"
           href="admin"
           class="nav-link text-blue-900 font-medium"
           ><i class="fa-solid fa-user-tie"></i
         ></a>
-        <span class="tooltiptext"
-          >This is for the admin login to add, delete or edit the projects
-          reflected on this page.</span
-        >
-      </div>
+       
     </footer>
 
     <script>
