@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Panel - Add Project</title>
+    <link rel="icon" type="images/static" href="/static/settings.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Your Custom CSS (optional) -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body class="bg-light">
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <!-- Flash Messages -->
+          {% with messages = get_flashed_messages() %} {% if messages %} {% for
+          message in messages %}
+          <div class="alert alert-info">{{ message }}</div>
+          {% endfor %} {% endif %} {% endwith %}
+
+          <div class="card shadow-lg">
+            <div style="text-align: center; text-decoration: none">
+              <a
+                href="/"
+                class="text-yellow-500 font-medium no-underline hover:text-blue-900 hover:no-underline transition"
+                ><h3>← BACK TO THE WEBSITE</h3></a
+              >
+            </div>
+            <div class="card-header bg-dark text-white text-center">
+              <h3>Add New Project</h3>
+            </div>
+            <div class="card-body bg-white">
+              <form
+                action="{{ url_for('add_project') }}"
+                method="POST"
+                enctype="multipart/form-data"
+              >
+                <div class="form-group">
+                  <label for="title">Project Title</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="title"
+                    id="title"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="description">Project Description</label>
+                  <textarea
+                    class="form-control"
+                    name="description"
+                    id="description"
+                    rows="4"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="technologies"
+                    >Technologies Used (comma-separated)</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="technologies"
+                    id="technologies"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="image">Project Image</label>
+                  <input
+                    type="file"
+                    class="form-control-file"
+                    name="image"
+                    id="image"
+                    accept="image/*"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="project_link">Project Link</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    name="project_link"
+                    id="project_link"
+                    required
+                  />
+                </div>
+
+                <button type="submit" class="btn btn-success btn-block">
+                  Upload Project
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4" />
+
+      <h4 class="text-center mt-4">Existing Projects</h4>
+
+      <div class="list-group mt-3">
+        {% for project in projects %}
+        <div
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <strong>{{ project.title }}</strong>
+            <small class="d-block text-muted">{{ project.technologies }}</small>
+          </div>
+          <a
+            href="{{ url_for('edit_project', project_id=project.id) }}"
+            class="btn btn-primary btn-sm mt-2"
+            >Edit</a
+          >
+
+          <form
+            action="{{ url_for('delete_project', project_id=project.id) }}"
+            method="POST"
+            onsubmit="return confirm('Are you sure you want to delete this project?');"
+          >
+            <button class="btn btn-danger btn-sm">Delete</button>
+          </form>
+        </div>
+        {% else %}
+        <p class="text-muted text-center">No projects found.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
