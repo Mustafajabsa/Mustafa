@@ -21,38 +21,7 @@
         scroll-behavior: smooth;
       }
 
-      .tooltip {
-        position: relative;
-        display: inline-block;
-      }
-
-      .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 500px;
-        background-color: black;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
-        position: absolute;
-        z-index: 1;
-        top: -5px;
-        right: 110%;
-      }
-
-      .tooltip .tooltiptext::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: 100%;
-        margin-top: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: transparent black transparent transparent;
-      }
-      .tooltip:hover .tooltiptext {
-        visibility: visible;
-      }
+      
       .nav-link {
         position: relative;
       }
@@ -1093,18 +1062,14 @@
           &copy; ٢٠٢٣ مصطفى عمر. جميع الحقوق محفوظة.
         </p>
       </div>
-      <div class="tooltip">
+    
         <a
           style="color: white; padding-left: 5px"
           href="admin"
           class="nav-link text-blue-900 font-medium"
           ><i class="fa-solid fa-user-tie"></i
         ></a>
-        <span class="tooltiptext"
-          >هذا مخصص لتسجيل دخول المسؤول لإضافة أو حذف أو تعديل المشاريع المعروضة
-          على هذه الصفحة.</span
-        >
-      </div>
+        
     </footer>
 
     <script>
