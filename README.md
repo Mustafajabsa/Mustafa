@@ -97,3 +97,6 @@ Secondary: White #ffffff
 Font: Clean sans-serif typography for readability
 
 Animations: Smooth fade-ins, hover transitions, and scroll reveals
+
+
+these should be correct
